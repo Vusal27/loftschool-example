@@ -7,11 +7,11 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
  */
 function forEach(array, fn) {
-  let total = [];
-  for (let i = 0; i < array.length; i++) {
-    fn(array[i], i, array);
-  }
-  return total;
+    for (let i = 0; i < array.length; i++) {
+        fn(array[i], i, array);
+    }
+
+    return array;
 }
 
 /*
@@ -21,11 +21,13 @@ function forEach(array, fn) {
  Посмотрите как работает map и повторите это поведение для массива, который будет передан в параметре array
  */
 function map(array, fn) {
-  let total = [];
-  for (let i = 0; i < array.length; i++) {
-    total.push(fn(array[i], i, array));
-  }
-  return total;
+    let total = [];
+
+    for (let i = 0; i < array.length; i++) {
+        total.push(fn(array[i], i, array));
+    }
+
+    return total;
 }
 
 /*
@@ -35,21 +37,22 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
-  let val = 0;
+    let val = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    if (i === 0) {
-      if (initial === undefined) {
-        i++;
-        val = fn(array[0], array[i], i, array);
-        continue;
-      }
-      val = fn(initial, array[i], i, array);
-      continue;
+    for (let i = 0; i < array.length; i++) {
+        if (i === 0) {
+            if (initial === undefined) {
+                i++;
+                val = fn(array[0], array[i], i, array);
+                continue;
+            }
+            val = fn(initial, array[i], i, array);
+            continue;
+        }
+        val = fn(val, array[i], i, array);
     }
-    val = fn(val, array[i], i, array);
-  }
-  return val;
+
+    return val;
 }
 
 /*
@@ -61,9 +64,9 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-  return Object.keys(obj).map(function(item) {
-    return item.toUpperCase();
-  });
+    return Object.keys(obj).map(function(item) {
+        return item.toUpperCase();
+    });
 }
 
 /*
