@@ -167,8 +167,8 @@ listTable.addEventListener('click', (e) => {
 		let button = e.target;
 		let cookieName = button.parentNode.parentNode.firstChild.innerText;
 
-        deleteCookie(cookieName);
-		loaderCookies();
+		deleteCookie(cookieName);
+		button.parentNode.parentNode.remove();
     }
 });
 
